@@ -16,14 +16,14 @@ def main(pagina):
     def enviar_mensagem(event):
         nome_usuario = caixa_nome.value
         text_campo_mensagem = campo_enviar_mensagem.value 
-        mensagem = f"{nome_usuario}: {campo_enviar_mensagem}"
+        mensagem = f"{nome_usuario}: {text_campo_mensagem}"
         pagina.pubsub.send_all(mensagem)
 
         # limpar a caixa de texto
         campo_enviar_mensagem.value = ""
         pagina.update()
 
-    campo_enviar_mensagem = ft.TextFiled(label="Digite sua mensagem",on_submit=enviar_mensagem)
+    campo_enviar_mensagem = ft.TextField(label="Digite sua mensagem",on_submit=enviar_mensagem)
     botao_enviar=ft.ElevatedButton("Enviar",on_click=enviar_mensagem)
 
     chat = ft.Column()
